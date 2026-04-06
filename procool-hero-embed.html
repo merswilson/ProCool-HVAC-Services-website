@@ -1,0 +1,731 @@
+<!--
+  ============================================================
+  PROCOOL HVAC SERVICES — Hero Section
+  Standalone HTML/CSS/JS Embed Block
+  Built by BrandIn Agency | wilson@brandin.agency
+  ============================================================
+
+  HOW TO USE:
+  1. Copy everything inside the <style> block → paste into your
+     website builder's "Custom CSS" panel.
+  2. Copy the HTML block → paste into a Custom HTML / Code Block.
+  3. Copy the <script> block → paste into a Custom JS panel
+     (or place at the bottom of the HTML block).
+
+  Works in: GoHighLevel, Webflow, Wix, Squarespace, WordPress,
+            or any builder that accepts custom code blocks.
+  ============================================================
+-->
+
+
+<!-- ============================================================
+     1. CSS STYLESHEET — paste into Custom CSS panel
+     ============================================================ -->
+<style>
+  /* Google Font */
+  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap');
+
+  /* ── Reset & base ── */
+  .pc-hero *,
+  .pc-hero *::before,
+  .pc-hero *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', Arial, sans-serif;
+  }
+
+  /* ── Section wrapper ── */
+  .pc-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0B1628;
+    overflow: hidden;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  /* Radial cyan glow */
+  .pc-hero__glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(41,171,226,0.12), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Inner layout */
+  .pc-hero__inner {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ── Navbar ── */
+  .pc-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .pc-nav { padding: 24px 64px; }
+  }
+  @media (min-width: 1024px) {
+    .pc-nav { padding: 24px 96px; }
+  }
+  @media (min-width: 1280px) {
+    .pc-nav { padding: 24px 128px; }
+  }
+
+  /* Logo */
+  .pc-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .pc-logo__icon {
+    width: 36px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .pc-logo__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 2px;
+  }
+
+  .pc-logo__name {
+    color: #fff;
+    font-weight: 900;
+    font-size: 20px;
+    font-style: italic;
+    letter-spacing: -0.5px;
+  }
+
+  .pc-logo__sub {
+    color: #29ABE2;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* Nav links */
+  .pc-nav__links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    list-style: none;
+  }
+
+  .pc-nav__links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .pc-nav__links a:hover { color: #29ABE2; }
+
+  /* Services dropdown */
+  .pc-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .pc-dropdown__toggle {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-family: 'Lato', Arial, sans-serif;
+    transition: color 0.2s;
+  }
+
+  .pc-dropdown__toggle:hover { color: #29ABE2; }
+
+  .pc-dropdown__toggle svg {
+    transition: transform 0.2s;
+  }
+
+  .pc-dropdown:hover .pc-dropdown__toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .pc-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    background: #0f1e35;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.25s;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pc-dropdown:hover .pc-dropdown__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .pc-dropdown__menu a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s, transform 0.2s;
+    display: block;
+  }
+
+  .pc-dropdown__menu a:hover {
+    color: #29ABE2;
+    transform: translateX(4px);
+  }
+
+  /* Nav CTA button */
+  .pc-nav__cta {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #29ABE2;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(41,171,226,0.25);
+    white-space: nowrap;
+  }
+
+  .pc-nav__cta:hover {
+    background: #1e96cc;
+    box-shadow: 0 8px 32px rgba(41,171,226,0.35);
+  }
+
+  @media (min-width: 768px) {
+    .pc-nav__cta { display: flex; }
+  }
+
+  /* Hamburger button */
+  .pc-hamburger {
+    display: flex;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .pc-hamburger:hover { background: rgba(255,255,255,0.2); }
+
+  @media (min-width: 768px) {
+    .pc-hamburger { display: none; }
+  }
+
+  /* Mobile overlay menu */
+  .pc-mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(11,22,40,0.98);
+    backdrop-filter: blur(12px);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+  .pc-mobile-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .pc-mobile-menu a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+
+  .pc-mobile-menu a:hover { color: #29ABE2; }
+
+  .pc-mobile-menu__close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .pc-mobile-menu__close:hover { background: rgba(255,255,255,0.2); }
+
+  /* Hide desktop nav on mobile */
+  @media (max-width: 767px) {
+    .pc-nav__links { display: none; }
+  }
+
+  /* ── Hero body ── */
+  .pc-hero__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 64px 24px;
+  }
+
+  /* Stars/review badge pill */
+  .pc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(41,171,226,0.3);
+    background: rgba(41,171,226,0.1);
+    border-radius: 100px;
+    padding: 8px 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pc-badge__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .pc-badge__stars svg {
+    width: 14px;
+    height: 14px;
+    fill: #29ABE2;
+  }
+
+  .pc-badge__rating {
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .pc-badge__dot {
+    color: rgba(255,255,255,0.25);
+    font-size: 13px;
+  }
+
+  .pc-badge__count {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+  }
+
+  .pc-badge__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #29ABE2;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: opacity 0.2s;
+  }
+
+  .pc-badge__link:hover { opacity: 0.8; }
+
+  /* Headline */
+  .pc-hero__headline {
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 900;
+    color: #fff;
+    max-width: 860px;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+  }
+
+  .pc-hero__headline span {
+    display: block;
+    color: #29ABE2;
+    font-style: italic;
+  }
+
+  /* Cyan divider — mirrors the logo separator */
+  .pc-divider {
+    width: 96px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #29ABE2, transparent);
+    margin: 0 auto 24px;
+    border: none;
+  }
+
+  /* Subheadline */
+  .pc-hero__sub {
+    color: rgba(255,255,255,0.55);
+    font-size: clamp(14px, 2vw, 18px);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* Location/area label */
+  .pc-hero__area {
+    color: rgba(255,255,255,0.25);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  /* CTA buttons */
+  .pc-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+
+  .pc-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #29ABE2;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 12px 32px rgba(41,171,226,0.3);
+  }
+
+  .pc-btn--primary:hover {
+    background: #1e96cc;
+    box-shadow: 0 12px 40px rgba(41,171,226,0.4);
+  }
+
+  .pc-btn--secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .pc-btn--secondary:hover {
+    border-color: rgba(41,171,226,0.6);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+  }
+
+  .pc-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  /* Stats row */
+  .pc-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .pc-stat {
+    text-align: center;
+  }
+
+  .pc-stat__number {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .pc-stat__number--cyan { color: #29ABE2; }
+
+  .pc-stat__label {
+    color: rgba(255,255,255,0.35);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  .pc-stat-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  @media (max-width: 640px) {
+    .pc-stat-divider { display: none; }
+  }
+</style>
+
+
+<!-- ============================================================
+     2. HTML BLOCK — paste into Custom HTML / Code Block
+     ============================================================ -->
+
+<section class="pc-hero">
+  <!-- Glow -->
+  <div class="pc-hero__glow"></div>
+
+  <div class="pc-hero__inner">
+
+    <!-- ── Navbar ── -->
+    <nav class="pc-nav">
+
+      <!-- Logo -->
+      <a href="/" class="pc-logo" aria-label="ProCool HVAC home">
+        <!-- Wind icon (matches logo) -->
+        <svg class="pc-logo__icon" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 14 Q28 14 36 14 Q48 14 52 8 Q56 2 50 2 Q44 2 44 8" stroke="#29ABE2" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <line x1="8" y1="28" x2="58" y2="28" stroke="#29ABE2" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M8 42 Q32 42 44 42 Q56 42 60 48 Q64 54 58 54 Q52 54 52 48" stroke="#29ABE2" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="pc-logo__text">
+          <span class="pc-logo__name">ProCool</span>
+          <span class="pc-logo__sub">HVAC Services</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav links -->
+      <ul class="pc-nav__links">
+        <li><a href="#">Home</a></li>
+        <li>
+          <div class="pc-dropdown">
+            <button class="pc-dropdown__toggle">
+              Services
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true">
+                <path d="m4.5 7.2 3.793 3.793a1 1 0 0 0 1.414 0L13.5 7.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="pc-dropdown__menu">
+              <li><a href="#">AC Repair</a></li>
+              <li><a href="#">AC Installation</a></li>
+              <li><a href="#">Tune-Ups</a></li>
+              <li><a href="#">Duct Cleaning</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a href="tel:3058427700" class="pc-nav__cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (305) 842-7700
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button class="pc-hamburger" id="pc-open-menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="24" height="24" aria-hidden="true">
+          <path d="M4 12h16M4 18h16M4 6h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile overlay menu -->
+    <div class="pc-mobile-menu" id="pc-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <button class="pc-mobile-menu__close" id="pc-close-menu" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="24" height="24" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <a href="#">Home</a>
+      <a href="#">AC Repair</a>
+      <a href="#">AC Installation</a>
+      <a href="#">Tune-Ups</a>
+      <a href="#">Duct Cleaning</a>
+      <a href="#">Reviews</a>
+      <a href="#">About</a>
+      <a href="tel:3058427700" class="pc-btn--primary" style="margin-top:8px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (305) 842-7700
+      </a>
+    </div>
+
+    <!-- ── Hero Body ── -->
+    <div class="pc-hero__body">
+
+      <!-- Stars badge pill -->
+      <div class="pc-badge">
+        <div class="pc-badge__stars" aria-label="5 stars">
+          <!-- 5 star icons -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="pc-badge__rating">4.9 Stars</span>
+        <span class="pc-badge__dot">·</span>
+        <span class="pc-badge__count">187 Google Reviews</span>
+        <a href="#reviews" class="pc-badge__link">
+          See Reviews
+          <svg viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+            <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="pc-hero__headline">
+        Fast, Reliable HVAC
+        <span>Serving Miami Since 2011</span>
+      </h1>
+
+      <!-- Cyan divider line (matches logo separator) -->
+      <hr class="pc-divider" aria-hidden="true">
+
+      <!-- Subheadline -->
+      <p class="pc-hero__sub">
+        AC repair, installation, tune-ups &amp; duct cleaning.
+        Miami-Dade and Broward County. Same-day service.
+      </p>
+
+      <!-- Service area -->
+      <p class="pc-hero__area">Miami-Dade &nbsp;·&nbsp; Broward County &nbsp;·&nbsp; Licensed &amp; Insured</p>
+
+      <!-- CTA buttons -->
+      <div class="pc-ctas">
+        <a href="tel:3058427700" class="pc-btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Get My Free Estimate
+        </a>
+        <a href="#services" class="pc-btn--secondary">
+          See Our Services
+          <svg viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+            <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="pc-stats">
+        <div class="pc-stat">
+          <div class="pc-stat__number">14+</div>
+          <div class="pc-stat__label">Years in Business</div>
+        </div>
+        <div class="pc-stat-divider" aria-hidden="true"></div>
+        <div class="pc-stat">
+          <div class="pc-stat__number">6</div>
+          <div class="pc-stat__label">Expert Technicians</div>
+        </div>
+        <div class="pc-stat-divider" aria-hidden="true"></div>
+        <div class="pc-stat">
+          <div class="pc-stat__number pc-stat__number--cyan">4.9★</div>
+          <div class="pc-stat__label">Google Rating</div>
+        </div>
+        <div class="pc-stat-divider" aria-hidden="true"></div>
+        <div class="pc-stat">
+          <div class="pc-stat__number">$380</div>
+          <div class="pc-stat__label">Avg. Job Value</div>
+        </div>
+      </div>
+
+    </div><!-- end .pc-hero__body -->
+  </div><!-- end .pc-hero__inner -->
+</section>
+
+
+<!-- ============================================================
+     3. JAVASCRIPT BLOCK — paste into Custom JS panel
+     (or place this <script> tag at the bottom of your HTML block)
+     ============================================================ -->
+<script>
+  (function () {
+    var openBtn  = document.getElementById('pc-open-menu');
+    var closeBtn = document.getElementById('pc-close-menu');
+    var menu     = document.getElementById('pc-mobile-menu');
+
+    if (!openBtn || !closeBtn || !menu) return;
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      document.body.style.overflow = '';
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close on ESC key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+
+    // Close when clicking a link inside the mobile menu
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  })();
+</script>
