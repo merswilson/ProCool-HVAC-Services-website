@@ -82,7 +82,7 @@ export default function HeroSection() {
             <div className="relative group flex items-center gap-1 cursor-pointer">
               <span className="hover:text-[#29ABE2] transition-colors">Services</span>
               <ChevronDown className="w-4 h-4" aria-hidden />
-              <div className="absolute bg-[#0f1e35] border border-white/10 text-white/80 font-normal flex flex-col gap-2 w-52 rounded-xl p-4 top-36 left-0 opacity-0 -translate-y-full group-hover:top-10 group-hover:opacity-100 transition-all duration-300 shadow-2xl z-50">
+              <div className="absolute bg-[#0f1e35] border border-white/10 text-white/80 font-normal flex flex-col gap-2 w-52 rounded-xl p-4 top-8 left-0 opacity-0 pointer-events-none translate-y-1 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 transition-all duration-200 shadow-2xl z-50">
                 <a href="#" className="hover:translate-x-1 hover:text-[#29ABE2] transition-all">AC Repair</a>
                 <a href="#" className="hover:translate-x-1 hover:text-[#29ABE2] transition-all">AC Installation</a>
                 <a href="#" className="hover:translate-x-1 hover:text-[#29ABE2] transition-all">Tune-Ups</a>
@@ -162,8 +162,8 @@ export default function HeroSection() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <a
-              href="tel:3058427700"
-              className="bg-[#29ABE2] hover:bg-[#1e96cc] text-white px-8 py-4 rounded-full font-bold text-base transition shadow-xl shadow-[#29ABE2]/25 flex items-center gap-2"
+              href="#estimate"
+              className="bg-[#F39C12] hover:bg-[#d4880f] text-white px-8 py-4 rounded-full font-bold text-base transition shadow-xl shadow-[#F39C12]/30 flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />
               Get My Free Estimate
