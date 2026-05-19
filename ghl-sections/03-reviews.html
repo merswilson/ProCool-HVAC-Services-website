@@ -1,0 +1,247 @@
+<!-- ═══════════════════════════════════════════════
+  PROCOOL HVAC — REVIEWS SECTION
+  Pure HTML + CSS + JS — no external dependencies
+  Paste into GHL Custom HTML block
+═══════════════════════════════════════════════ -->
+
+<style>
+  .pcr-wrap *, .pcr-wrap *::before, .pcr-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .pcr-wrap a { text-decoration: none; }
+
+  .pcr-wrap {
+    background: #f8fafc;
+    padding: 80px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (min-width: 768px)  { .pcr-wrap { padding: 80px 64px; } }
+  @media (min-width: 1024px) { .pcr-wrap { padding: 80px 96px; } }
+
+  .pcr-inner { max-width: 1152px; margin: 0 auto; }
+
+  .pcr-header { text-align: center; margin-bottom: 56px; }
+  .pcr-overline { color: #F39C12; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; display: block; }
+  .pcr-title { color: #0B1628; font-size: 36px; font-weight: 900; margin-top: 8px; margin-bottom: 12px; }
+  @media (min-width: 768px) { .pcr-title { font-size: 48px; } }
+  .pcr-stars-row { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 12px; }
+  .pcr-sub { color: #6b7280; font-size: 20px; }
+
+  .pcr-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 768px)  { .pcr-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .pcr-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .pcr-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .pcr-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+  }
+  .pcr-card-stars { display: flex; align-items: center; gap: 2px; margin-bottom: 12px; }
+  .pcr-quote-icon { margin-bottom: 8px; color: rgba(31,92,153,0.2); }
+  .pcr-text { color: #4b5563; font-size: 16px; line-height: 1.65; margin-bottom: 20px; }
+  .pcr-footer { display: flex; align-items: center; justify-content: space-between; }
+  .pcr-name { font-weight: 700; font-size: 16px; color: #0B1628; }
+  .pcr-location { color: #9ca3af; font-size: 14px; margin-top: 2px; }
+  .pcr-badge {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F5C99;
+    background: rgba(31,92,153,0.1);
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .pcr-cta-row { text-align: center; margin-top: 48px; }
+  .pcr-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #F39C12;
+    color: #ffffff !important;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(243,156,18,0.3);
+  }
+  .pcr-btn:hover { background: #d4880f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(243,156,18,0.4); }
+
+  /* ── Scroll Animations ── */
+  [data-pcr-anim] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    will-change: opacity, transform;
+  }
+  [data-pcr-anim].pcr-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-pcr-anim][data-delay="1"] { transition-delay: 0.06s; }
+  [data-pcr-anim][data-delay="2"] { transition-delay: 0.12s; }
+  [data-pcr-anim][data-delay="3"] { transition-delay: 0.18s; }
+  [data-pcr-anim][data-delay="4"] { transition-delay: 0.24s; }
+  [data-pcr-anim][data-delay="5"] { transition-delay: 0.30s; }
+  [data-pcr-anim][data-delay="6"] { transition-delay: 0.36s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-pcr-anim] { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<section class="pcr-wrap" id="reviews">
+  <div class="pcr-inner">
+
+    <div class="pcr-header" data-pcr-anim>
+      <span class="pcr-overline">Social Proof</span>
+      <h2 class="pcr-title">4.9 Stars on Google</h2>
+      <div class="pcr-stars-row">
+        <svg width="24" height="24" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="24" height="24" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="24" height="24" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="24" height="24" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="24" height="24" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="pcr-sub">187 verified reviews from Miami-Dade and Broward homeowners</p>
+    </div>
+
+    <div class="pcr-grid">
+
+      <!-- Review 1 -->
+      <div class="pcr-card" data-pcr-anim data-delay="1">
+        <div class="pcr-card-stars">
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pcr-quote-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <p class="pcr-text">"My AC broke at 10pm on a Friday. Carlos sent a tech within the hour. Fixed it same night, no extra charge for the after-hours call. Absolutely incredible service."</p>
+        <div class="pcr-footer">
+          <div><div class="pcr-name">Maria G.</div><div class="pcr-location">Hialeah, FL</div></div>
+          <span class="pcr-badge">AC Repair</span>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="pcr-card" data-pcr-anim data-delay="2">
+        <div class="pcr-card-stars">
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pcr-quote-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <p class="pcr-text">"Got 3 quotes for a new AC install. ProCool was fairly priced and the most professional by far. Clean install, explained everything, and it's been running perfectly for 8 months."</p>
+        <div class="pcr-footer">
+          <div><div class="pcr-name">James T.</div><div class="pcr-location">Coral Gables, FL</div></div>
+          <span class="pcr-badge">AC Installation</span>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="pcr-card" data-pcr-anim data-delay="3">
+        <div class="pcr-card-stars">
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pcr-quote-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <p class="pcr-text">"Had a tune-up done before summer hit. The tech found a refrigerant leak I didn't know about. Saved me from a full breakdown in August. Worth every penny."</p>
+        <div class="pcr-footer">
+          <div><div class="pcr-name">Linda R.</div><div class="pcr-location">Pembroke Pines, FL</div></div>
+          <span class="pcr-badge">Tune-Up</span>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="pcr-card" data-pcr-anim data-delay="4">
+        <div class="pcr-card-stars">
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pcr-quote-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <p class="pcr-text">"The duct cleaning made a huge difference in our air quality. My daughter's allergies have been way better since. ProCool was thorough and the team was super professional."</p>
+        <div class="pcr-footer">
+          <div><div class="pcr-name">Roberto M.</div><div class="pcr-location">Doral, FL</div></div>
+          <span class="pcr-badge">Duct Cleaning</span>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="pcr-card" data-pcr-anim data-delay="5">
+        <div class="pcr-card-stars">
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pcr-quote-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <p class="pcr-text">"Called at 8am, tech was here by noon. Fixed the issue fast, price was exactly what they quoted — no surprises. That's rare. I'm a customer for life."</p>
+        <div class="pcr-footer">
+          <div><div class="pcr-name">Stephanie K.</div><div class="pcr-location">Hollywood, FL</div></div>
+          <span class="pcr-badge">AC Repair</span>
+        </div>
+      </div>
+
+      <!-- Review 6 -->
+      <div class="pcr-card" data-pcr-anim data-delay="6">
+        <div class="pcr-card-stars">
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" style="fill:#F39C12" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pcr-quote-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <p class="pcr-text">"ProCool installed a new system in our office. Great communication, fast turnaround, and they cleaned up after themselves. Super impressed with the whole team."</p>
+        <div class="pcr-footer">
+          <div><div class="pcr-name">David C.</div><div class="pcr-location">Aventura, FL</div></div>
+          <span class="pcr-badge">AC Installation</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pcr-cta-row" data-pcr-anim>
+      <a href="#estimate" class="pcr-btn">Join Our Happy Customers — Get a Free Estimate</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-pcr-anim]');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      for (var i = 0; i < els.length; i++) els[i].classList.add('pcr-in');
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('pcr-in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    for (var i = 0; i < els.length; i++) obs.observe(els[i]);
+  })();
+</script>

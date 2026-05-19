@@ -1,0 +1,457 @@
+<!-- ═══════════════════════════════════════════════
+  PROCOOL HVAC — HERO SECTION (with Navbar)
+  Pure HTML + CSS + JS — no external dependencies
+  Paste into GHL Custom HTML block
+  IMAGE: Replace 'images/image 4.jpg' with your GHL Media Library URL
+═══════════════════════════════════════════════ -->
+
+<style>
+  .pc-hero *, .pc-hero *::before, .pc-hero *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .pc-hero a { text-decoration: none; }
+  .pc-hero ul { list-style: none; }
+  .pc-hero button { cursor: pointer; border: none; background: none; }
+
+  .pc-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* REPLACE 'images/image 4.jpg' with your GHL Media Library URL */
+    background: linear-gradient(rgba(11,22,40,0.82), rgba(11,22,40,0.94)), url('https://assets.cdn.filesafe.space/KNpH88QQxM6HLpAQ7tJu/media/69e85391b0e5e2bb7fafa7ca.jpg') center / cover no-repeat;
+    background-color: #0B1628;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+  }
+  .pc-hero-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(41,171,226,0.15), transparent 65%);
+    pointer-events: none;
+    animation: pcGlowPulse 4s ease-in-out infinite;
+  }
+  @keyframes pcGlowPulse {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1; }
+  }
+  .pc-hero-inner {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ── Navbar ── */
+  .pc-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    width: 100%;
+  }
+  @media (min-width: 768px)  { .pc-nav { padding: 20px 64px; } }
+  @media (min-width: 1024px) { .pc-nav { padding: 20px 96px; } }
+  @media (min-width: 1280px) { .pc-nav { padding: 20px 128px; } }
+
+  .pc-logo { display: flex; align-items: center; gap: 12px; }
+  .pc-logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .pc-logo-name { color: #fff; font-weight: 900; font-size: 20px; font-style: italic; letter-spacing: -0.025em; }
+  .pc-logo-sub  { color: #29ABE2; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .pc-nav-links { display: none; align-items: center; gap: 32px; font-weight: 500; }
+  @media (min-width: 768px) { .pc-nav-links { display: flex; } }
+  .pc-nav-links > a { color: rgba(255,255,255,0.8); transition: color 0.15s; }
+  .pc-nav-links > a:hover { color: #29ABE2; }
+
+  .pc-dropdown-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.8);
+    transition: color 0.15s;
+  }
+  .pc-dropdown-wrap:hover { color: #29ABE2; }
+  .pc-dropdown {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    background: #0f1e35;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 208px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    z-index: 50;
+  }
+  .pc-dropdown-wrap:hover .pc-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .pc-dropdown a { color: rgba(255,255,255,0.8); font-weight: 400; font-size: 14px; display: block; transition: color 0.15s, transform 0.15s; }
+  .pc-dropdown a:hover { color: #29ABE2; transform: translateX(4px); }
+
+  .pc-nav-cta {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #29ABE2;
+    color: #fff !important;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+  .pc-nav-cta:hover { background: #1e96cc; }
+  @media (min-width: 768px) { .pc-nav-cta { display: flex; } }
+
+  .pc-hamburger {
+    display: flex;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+  .pc-hamburger:hover { background: rgba(255,255,255,0.2); }
+  @media (min-width: 768px) { .pc-hamburger { display: none; } }
+
+  /* ── Mobile Menu ── */
+  .pc-mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(11,22,40,0.98);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .pc-mobile-menu.pc-open { display: flex; }
+  .pc-mobile-menu > a {
+    color: rgba(255,255,255,0.8);
+    font-size: 20px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .pc-mobile-menu > a:hover { color: #29ABE2; }
+  .pc-mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    transition: background 0.15s;
+  }
+  .pc-mobile-close:hover { background: rgba(255,255,255,0.2); }
+  .pc-mobile-cta-btn {
+    background: #29ABE2 !important;
+    color: #fff !important;
+    padding: 12px 32px !important;
+    border-radius: 999px;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+  }
+
+  /* ── Hero Body ── */
+  .pc-hero-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 64px 24px;
+    text-align: center;
+  }
+
+  /* ── Hero Load Animations ── */
+  @keyframes pcFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pcFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .pc-pill      { animation: pcFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both 0.15s; }
+  .pc-h1        { animation: pcFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both 0.35s; }
+  .pc-divider   { animation: pcFadeIn 0.6s ease both 0.6s; }
+  .pc-subhead   { animation: pcFadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both 0.7s; }
+  .pc-licensed  { animation: pcFadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both 0.82s; }
+  .pc-ctas      { animation: pcFadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both 0.94s; }
+  .pc-stats-row { animation: pcFadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both 1.1s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pc-pill, .pc-h1, .pc-divider, .pc-subhead, .pc-licensed, .pc-ctas, .pc-stats-row {
+      animation: none;
+    }
+  }
+
+  .pc-pill {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(41,171,226,0.3);
+    background: rgba(41,171,226,0.1);
+    border-radius: 999px;
+    padding: 8px 16px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(4px);
+  }
+  .pc-pill-stars { display: flex; align-items: center; gap: 2px; }
+  .pc-pill-score { color: rgba(255,255,255,0.9); font-weight: 600; font-size: 16px; }
+  .pc-pill-dot   { color: rgba(255,255,255,0.3); font-size: 16px; }
+  .pc-pill-count { color: rgba(255,255,255,0.6); font-size: 16px; }
+  .pc-pill-link  { display: flex; align-items: center; gap: 4px; color: #29ABE2; font-weight: 600; font-size: 16px; margin-left: 4px; }
+
+  .pc-h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    max-width: 896px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  }
+  @media (min-width: 768px) { .pc-h1 { font-size: 72px; } }
+  .pc-h1 span { display: block; color: #29ABE2; font-style: italic; }
+
+  .pc-divider {
+    width: 96px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #29ABE2, transparent);
+    margin-bottom: 24px;
+  }
+
+  .pc-subhead {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    max-width: 576px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  @media (min-width: 768px) { .pc-subhead { font-size: 18px; } }
+
+  .pc-licensed {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .pc-ctas { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  @media (min-width: 640px) { .pc-ctas { flex-direction: row; } }
+
+  .pc-btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F39C12;
+    color: #fff !important;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(243,156,18,0.4);
+  }
+  .pc-btn-primary:hover { background: #d4880f; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(243,156,18,0.5); }
+
+  .pc-btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8) !important;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    backdrop-filter: blur(4px);
+  }
+  .pc-btn-secondary:hover {
+    border-color: rgba(41,171,226,0.6);
+    color: #fff !important;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .pc-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    width: 100%;
+    max-width: 672px;
+  }
+  .pc-stat { text-align: center; }
+  .pc-stat-val { font-size: 30px; font-weight: 900; color: #fff; }
+  .pc-stat-val.pc-cyan { color: #29ABE2; }
+  .pc-stat-lbl { color: rgba(255,255,255,0.4); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+  .pc-stat-sep { width: 1px; height: 32px; background: rgba(255,255,255,0.1); display: none; }
+  @media (min-width: 640px) { .pc-stat-sep { display: block; } }
+</style>
+
+<section class="pc-hero">
+  <div class="pc-hero-glow"></div>
+  <div class="pc-hero-inner">
+
+    <!-- Navbar -->
+    <nav class="pc-nav">
+      <a href="/" class="pc-logo" aria-label="ProCool HVAC home">
+        <svg width="36" height="28" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 14 Q28 14 36 14 Q48 14 52 8 Q56 2 50 2 Q44 2 44 8" stroke="#29ABE2" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <line x1="8" y1="28" x2="58" y2="28" stroke="#29ABE2" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M8 42 Q32 42 44 42 Q56 42 60 48 Q64 54 58 54 Q52 54 52 48" stroke="#29ABE2" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="pc-logo-text">
+          <span class="pc-logo-name">ProCool</span>
+          <span class="pc-logo-sub">HVAC Services</span>
+        </div>
+      </a>
+
+      <div class="pc-nav-links">
+        <a href="#">Home</a>
+        <div class="pc-dropdown-wrap">
+          <span>Services</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="pc-dropdown">
+            <a href="#services">AC Repair</a>
+            <a href="#services">AC Installation</a>
+            <a href="#services">Tune-Ups</a>
+            <a href="#services">Duct Cleaning</a>
+          </div>
+        </div>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About</a>
+      </div>
+
+      <a href="tel:3058427700" class="pc-nav-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (305) 842-7700
+      </a>
+
+      <button class="pc-hamburger" id="pcHeroOpen" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="pc-mobile-menu" id="pcHeroMenu">
+      <button class="pc-mobile-close" id="pcHeroClose" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <a href="#" onclick="pcCloseMenu()">Home</a>
+      <a href="#services" onclick="pcCloseMenu()">Services</a>
+      <a href="#reviews"  onclick="pcCloseMenu()">Reviews</a>
+      <a href="#about"    onclick="pcCloseMenu()">About</a>
+      <a href="tel:3058427700" class="pc-mobile-cta-btn">(305) 842-7700</a>
+    </div>
+
+    <!-- Hero body -->
+    <div class="pc-hero-body">
+
+      <div class="pc-pill">
+        <div class="pc-pill-stars">
+          <svg width="14" height="14" style="fill:#29ABE2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" style="fill:#29ABE2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" style="fill:#29ABE2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" style="fill:#29ABE2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" style="fill:#29ABE2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="pc-pill-score">4.9 Stars</span>
+        <span class="pc-pill-dot">·</span>
+        <span class="pc-pill-count">187 Google Reviews</span>
+        <a href="#reviews" class="pc-pill-link">
+          See Reviews
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <h1 class="pc-h1">
+        Fast, Reliable HVAC
+        <span>Serving Miami Since 2011</span>
+      </h1>
+
+      <div class="pc-divider"></div>
+
+      <p class="pc-subhead">
+        AC repair, installation, tune-ups &amp; duct cleaning.<br>
+        Miami-Dade and Broward County. Same-day service.
+      </p>
+
+      <p class="pc-licensed">Miami-Dade · Broward County · Licensed &amp; Insured</p>
+
+      <div class="pc-ctas">
+        <a href="#estimate" class="pc-btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Get My Free Estimate
+        </a>
+        <a href="#services" class="pc-btn-secondary">
+          See Our Services
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="pc-stats-row">
+        <div class="pc-stat"><div class="pc-stat-val">14+</div><div class="pc-stat-lbl">Years in Business</div></div>
+        <div class="pc-stat-sep"></div>
+        <div class="pc-stat"><div class="pc-stat-val">6</div><div class="pc-stat-lbl">Expert Technicians</div></div>
+        <div class="pc-stat-sep"></div>
+        <div class="pc-stat"><div class="pc-stat-val pc-cyan">4.9★</div><div class="pc-stat-lbl">Google Rating</div></div>
+        <div class="pc-stat-sep"></div>
+        <div class="pc-stat"><div class="pc-stat-val">$380</div><div class="pc-stat-lbl">Avg. Job Value</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function pcCloseMenu() {
+    document.getElementById('pcHeroMenu').classList.remove('pc-open');
+    document.body.style.overflow = '';
+  }
+  (function () {
+    var open  = document.getElementById('pcHeroOpen');
+    var close = document.getElementById('pcHeroClose');
+    var menu  = document.getElementById('pcHeroMenu');
+    if (!open || !close || !menu) return;
+    open.addEventListener('click', function () {
+      menu.classList.add('pc-open');
+      document.body.style.overflow = 'hidden';
+    });
+    close.addEventListener('click', pcCloseMenu);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') pcCloseMenu(); });
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('pc-open') && !menu.contains(e.target) && e.target !== open) pcCloseMenu();
+    });
+  })();
+</script>

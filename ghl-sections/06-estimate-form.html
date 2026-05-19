@@ -1,0 +1,215 @@
+<!-- ═══════════════════════════════════════════════
+  PROCOOL HVAC — ESTIMATE FORM SECTION
+  Pure HTML + CSS + JS — GHL form embed wired in
+  Paste into GHL Custom HTML block
+═══════════════════════════════════════════════ -->
+
+<style>
+  .pcf-wrap *, .pcf-wrap *::before, .pcf-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .pcf-wrap a { text-decoration: none; }
+  .pcf-wrap button { cursor: pointer; }
+
+  .pcf-wrap {
+    background: #f0f6ff;
+    padding: 80px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (min-width: 768px)  { .pcf-wrap { padding: 80px 64px; } }
+  @media (min-width: 1024px) { .pcf-wrap { padding: 80px 96px; } }
+
+  .pcf-inner { max-width: 1152px; margin: 0 auto; }
+
+  .pcf-header { text-align: center; margin-bottom: 48px; }
+  .pcf-overline { color: #F39C12; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; display: block; }
+  .pcf-title { color: #0B1628; font-size: 36px; font-weight: 900; margin-top: 8px; margin-bottom: 12px; }
+  @media (min-width: 768px) { .pcf-title { font-size: 48px; } }
+  .pcf-sub { color: #6b7280; font-size: 20px; }
+
+  .pcf-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (min-width: 1024px) { .pcf-layout { grid-template-columns: 1fr 1fr; } }
+
+  /* Form card */
+  .pcf-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .pcf-card iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* How it works */
+  .pcf-steps-title { font-size: 24px; font-weight: 900; color: #0B1628; margin-bottom: 32px; }
+  .pcf-steps { display: flex; flex-direction: column; gap: 24px; }
+  .pcf-step { display: flex; align-items: flex-start; gap: 20px; }
+  .pcf-step-icon {
+    width: 56px;
+    height: 56px;
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .pcf-step:hover .pcf-step-icon { background: #1F5C99; border-color: #1F5C99; }
+  .pcf-step-icon svg { color: #1F5C99; transition: color 0.3s; }
+  .pcf-step:hover .pcf-step-icon svg { color: #fff; }
+  .pcf-step-name { font-size: 18px; font-weight: 900; color: #0B1628; margin-bottom: 4px; }
+  .pcf-step-desc { font-size: 16px; color: #6b7280; line-height: 1.6; }
+
+  .pcf-call-box {
+    margin-top: 40px;
+    background: #1F5C99;
+    border-radius: 16px;
+    padding: 24px;
+    color: #ffffff;
+  }
+  .pcf-call-title { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .pcf-call-sub { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+  .pcf-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #F39C12;
+    color: #ffffff !important;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .pcf-call-btn:hover { background: #d4880f; transform: translateY(-1px); }
+
+  /* ── Scroll Animations ── */
+  [data-pcf-anim] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    will-change: opacity, transform;
+  }
+  [data-pcf-anim].pcf-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-pcf-anim][data-delay="1"] { transition-delay: 0.1s; }
+  [data-pcf-anim][data-delay="2"] { transition-delay: 0.2s; }
+  [data-pcf-anim][data-delay="3"] { transition-delay: 0.3s; }
+  [data-pcf-anim][data-delay="4"] { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-pcf-anim] { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<section class="pcf-wrap" id="estimate">
+  <div class="pcf-inner">
+
+    <div class="pcf-header" data-pcf-anim>
+      <span class="pcf-overline">Free Estimate</span>
+      <h2 class="pcf-title">Get My Free HVAC Estimate</h2>
+      <p class="pcf-sub">Fill out the form below — we'll text you within 5 minutes</p>
+    </div>
+
+    <div class="pcf-layout">
+
+      <!-- GHL Form card -->
+      <div class="pcf-card" data-pcf-anim data-delay="1">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/4BPLHixlINxihQiSmnXt"
+          style="width:100%;height:489px;border:none;border-radius:3px"
+          id="inline-4BPLHixlINxihQiSmnXt"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="ProCool HVAC Services Form"
+          data-height="489"
+          data-layout-iframe-id="inline-4BPLHixlINxihQiSmnXt"
+          data-form-id="4BPLHixlINxihQiSmnXt"
+          title="ProCool HVAC Services Form"
+        ></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+
+      <!-- How It Works -->
+      <div>
+        <div class="pcf-steps-title" data-pcf-anim data-delay="1">How It Works — 3 Simple Steps</div>
+        <div class="pcf-steps">
+
+          <div class="pcf-step" data-pcf-anim data-delay="2">
+            <div class="pcf-step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/><line x1="9" y1="8" x2="11" y2="8"/></svg>
+            </div>
+            <div>
+              <div class="pcf-step-name">1. Fill Out the Form</div>
+              <p class="pcf-step-desc">Takes 30 seconds. Tell us what's going on with your HVAC system.</p>
+            </div>
+          </div>
+
+          <div class="pcf-step" data-pcf-anim data-delay="3">
+            <div class="pcf-step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="pcf-step-name">2. We Call or Text You</div>
+              <p class="pcf-step-desc">Expect a text from Carlos within 5 minutes to schedule your visit.</p>
+            </div>
+          </div>
+
+          <div class="pcf-step" data-pcf-anim data-delay="4">
+            <div class="pcf-step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div class="pcf-step-name">3. Free Estimate Visit</div>
+              <p class="pcf-step-desc">A certified ProCool tech comes to you. No hidden fees. Clear quote.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcf-call-box" data-pcf-anim data-delay="4">
+          <div class="pcf-call-title">Prefer to call?</div>
+          <p class="pcf-call-sub">Talk to a real person right now — no robots.</p>
+          <a href="tel:3058427700" class="pcf-call-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (305) 842-7700
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-pcf-anim]');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      for (var i = 0; i < els.length; i++) els[i].classList.add('pcf-in');
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('pcf-in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    for (var i = 0; i < els.length; i++) obs.observe(els[i]);
+  })();
+</script>

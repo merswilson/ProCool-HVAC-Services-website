@@ -1,0 +1,188 @@
+<!-- ═══════════════════════════════════════════════
+  PROCOOL HVAC — SERVICE AREA SECTION
+  Pure HTML + CSS + JS — no external dependencies
+  Paste into GHL Custom HTML block
+  IMAGE: Replace 'images/image 2.jpg' with your GHL Media Library URL
+═══════════════════════════════════════════════ -->
+
+<style>
+  .pcsa-wrap *, .pcsa-wrap *::before, .pcsa-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .pcsa-wrap a { text-decoration: none; }
+  .pcsa-wrap ul { list-style: none; }
+
+  .pcsa-wrap {
+    /* REPLACE 'images/image 2.jpg' with your GHL Media Library URL */
+    background: linear-gradient(rgba(11,22,40,0.87), rgba(11,22,40,0.93)), url('https://assets.cdn.filesafe.space/KNpH88QQxM6HLpAQ7tJu/media/69e85391a1636a6c650e66b1.jpg') center / cover no-repeat;
+    background-color: #0B1628;
+    padding: 80px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (min-width: 768px)  { .pcsa-wrap { padding: 80px 64px; } }
+  @media (min-width: 1024px) { .pcsa-wrap { padding: 80px 96px; } }
+
+  .pcsa-inner { max-width: 1152px; margin: 0 auto; }
+
+  .pcsa-header { text-align: center; margin-bottom: 56px; }
+  .pcsa-overline { color: #F39C12; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; display: block; }
+  .pcsa-title { color: #ffffff; font-size: 36px; font-weight: 900; margin-top: 8px; margin-bottom: 16px; }
+  @media (min-width: 768px) { .pcsa-title { font-size: 48px; } }
+  .pcsa-sub { color: rgba(255,255,255,0.5); font-size: 20px; max-width: 576px; margin: 0 auto; line-height: 1.6; }
+
+  .pcsa-counties {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 768px;
+    margin: 0 auto 48px;
+  }
+  @media (min-width: 768px) { .pcsa-counties { grid-template-columns: 1fr 1fr; } }
+
+  .pcsa-county {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .pcsa-county:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(41,171,226,0.3);
+  }
+  .pcsa-county-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .pcsa-county-header svg { color: #F39C12; flex-shrink: 0; }
+  .pcsa-county-title { color: #ffffff; font-size: 20px; font-weight: 900; }
+
+  .pcsa-city-list { display: flex; flex-direction: column; gap: 8px; }
+  .pcsa-city {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    transition: color 0.15s;
+  }
+  .pcsa-city:hover { color: #fff; }
+  .pcsa-city svg { color: #29ABE2; flex-shrink: 0; }
+
+  .pcsa-cta-area { text-align: center; }
+  .pcsa-note { color: rgba(255,255,255,0.5); font-size: 16px; margin-bottom: 20px; }
+  .pcsa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #F39C12;
+    color: #ffffff !important;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(243,156,18,0.35);
+  }
+  .pcsa-btn:hover { background: #d4880f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(243,156,18,0.45); }
+
+  /* ── Scroll Animations ── */
+  [data-pcsa-anim] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    will-change: opacity, transform;
+  }
+  [data-pcsa-anim].pcsa-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-pcsa-anim][data-delay="1"] { transition-delay: 0.1s; }
+  [data-pcsa-anim][data-delay="2"] { transition-delay: 0.2s; }
+  [data-pcsa-anim][data-delay="3"] { transition-delay: 0.3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-pcsa-anim] { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<section class="pcsa-wrap" id="service-area">
+  <div class="pcsa-inner">
+
+    <div class="pcsa-header" data-pcsa-anim>
+      <span class="pcsa-overline">Where We Work</span>
+      <h2 class="pcsa-title">Serving All of South Florida</h2>
+      <p class="pcsa-sub">ProCool covers Miami-Dade and Broward County — same-day service available throughout the area.</p>
+    </div>
+
+    <div class="pcsa-counties">
+
+      <!-- Miami-Dade -->
+      <div class="pcsa-county" data-pcsa-anim data-delay="1">
+        <div class="pcsa-county-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="pcsa-county-title">Miami-Dade County</span>
+        </div>
+        <ul class="pcsa-city-list">
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Miami</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hialeah</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Coral Gables</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Doral</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Homestead</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Kendall</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Miami Beach</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>South Miami</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Aventura</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cutler Bay</li>
+        </ul>
+      </div>
+
+      <!-- Broward -->
+      <div class="pcsa-county" data-pcsa-anim data-delay="2">
+        <div class="pcsa-county-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="pcsa-county-title">Broward County</span>
+        </div>
+        <ul class="pcsa-city-list">
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fort Lauderdale</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hollywood</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pembroke Pines</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Miramar</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Coral Springs</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Davie</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sunrise</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Plantation</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Weston</li>
+          <li class="pcsa-city"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hallandale Beach</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pcsa-cta-area" data-pcsa-anim data-delay="3">
+      <p class="pcsa-note">Not sure if we cover your area? Just call us.</p>
+      <a href="tel:3058427700" class="pcsa-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Check My Area — Call (305) 842-7700
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-pcsa-anim]');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      for (var i = 0; i < els.length; i++) els[i].classList.add('pcsa-in');
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('pcsa-in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    for (var i = 0; i < els.length; i++) obs.observe(els[i]);
+  })();
+</script>
